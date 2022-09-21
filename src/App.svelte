@@ -1,4 +1,6 @@
 <script>
+    import { empty } from "svelte/internal";
+
   let todos = [];
   let todo = "";
   let filter = "all";
@@ -48,13 +50,15 @@
             </div>
           {/if}
         {:else if !todo.status}
-          <div class="todo">
-            <p>{todo.todo}</p>
-            <div class="btn-content">
-              <input type="checkbox" bind:checked={todo.status} />
-              <button on:click={() => deleteTodo(index)}>&Cross;</button>
+          {#if !todo.status}
+            <div class="todo">
+              <p>{todo.todo}</p>
+              <div class="btn-content">
+                <input type="checkbox" bind:checked={todo.status} />
+                <button on:click={() => deleteTodo(index)}>&Cross;</button>
+              </div>
             </div>
-          </div>
+          {/if}
         {/if}
       {/each}
     </div>
@@ -172,6 +176,11 @@
     color: rgba(255, 255, 255, 0.959);
     font-family: sans-serif;
   }
+  .btn-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .todo input {
     position: relative;
     transition: 0.5s;
@@ -183,11 +192,6 @@
     appearance: none;
     cursor: pointer;
     border: 1px solid rgb(87, 166, 255);
-  }
-  .btn-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
   .todo input::before {
     position: absolute;
@@ -249,6 +253,36 @@
   @media (max-width: 991.98px) {
     input[type="text"] {
       width: 300px;
+    }
+    .filter-text {
+      width: 200px;
+    }
+    .filter-text h1 {
+      font-size: 24pt;
+    }
+  }
+  @media (max-width: 467px) {
+    input[type="text"] {
+      width: 190px;
+      font-size: 1rem;
+      padding: 0.5rem 0.3rem;
+    }
+    .addbtn {
+      padding: 0.5rem 0.3rem;
+      font-size: 1rem;
+    }
+    .filter-text {
+      width: 200px;
+    }
+    .filter-text h1 {
+      font-size: 20pt;
+    }
+    .content {
+      padding: 10px;
+    }
+    .btn {
+      font-size: 0.8rem;
+      padding: 0.5rem 0.3rem;
     }
   }
 </style>
