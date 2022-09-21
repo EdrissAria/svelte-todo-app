@@ -1,6 +1,4 @@
 <script>
-    import { empty } from "svelte/internal";
-
   let todos = [];
   let todo = "";
   let filter = "all";
@@ -60,6 +58,9 @@
             </div>
           {/if}
         {/if}
+        {:else}
+        <img src="empty.png" alt="empty" class="empty"/>
+        <h1>No To-dos</h1>
       {/each}
     </div>
     <div class="btn-footer">
@@ -181,6 +182,10 @@
     justify-content: space-between;
     align-items: center;
   }
+  .content h1{
+    color: var(--light);
+    font-family: sans-serif;
+  }
   .todo input {
     position: relative;
     transition: 0.5s;
@@ -248,7 +253,9 @@
   .btn:hover {
     transform: scale3d(1.01, 1.01, 1.01);
   }
-
+  .empty{
+    width: 300px;
+  }
   /* Media Query */
   @media (max-width: 991.98px) {
     input[type="text"] {
@@ -259,6 +266,9 @@
     }
     .filter-text h1 {
       font-size: 24pt;
+    }
+    .empty{
+      width: 200px;
     }
   }
   @media (max-width: 467px) {
@@ -283,6 +293,9 @@
     .btn {
       font-size: 0.8rem;
       padding: 0.5rem 0.3rem;
+    }
+    .empty{
+      width: 100px;
     }
   }
 </style>
