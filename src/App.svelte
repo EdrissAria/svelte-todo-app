@@ -6,7 +6,7 @@
   import Button from "./components/Button.svelte"  
   // variables and functions
   let todos = [];
-  $: todo = "";
+  let todo = "";
   let filter = "all";
   const addTodo = () => {
     if (todo == "") {
@@ -26,6 +26,7 @@
     todos.splice(id, 1);
     todos = [...todos];
   };
+  
 </script>
 
 <main>
@@ -34,17 +35,7 @@
     <TodoInput {addTodo} bind:value={todo} />
     <div>
       {#each todos as todo, index}
-        {#if filter == "all"}
-          <TodoCard {todo} {deleteTodo} {index} />
-        {:else if filter == "completed"}
-          {#if todo.status}
-            <TodoCard {todo} {deleteTodo} {index} />
-          {/if}
-        {:else if !todo.status}
-          {#if !todo.status}
-            <TodoCard {todo} {deleteTodo} {index} />
-          {/if}
-        {/if}
+       <TodoCard {todo} {filter} {index} {deleteTodo} />
       {:else}
         <img src="empty.png" alt="empty" class="empty" />
         <h1>No To-dos</h1>
