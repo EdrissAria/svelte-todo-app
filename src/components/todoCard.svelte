@@ -1,19 +1,38 @@
 <script>
-    export let todo; 
-    export let deleteTodo;  
-    export let index;
+  export let todo;
+  export let deleteTodo;
+  export let index;
+  export let filter;
 </script>
 
 <div class="todo">
+  {#if filter == "all"}
     <p>{todo.todo}</p>
     <div class="btn-content">
+      <input type="checkbox" bind:checked={todo.status} />
+      <button on:click={() => deleteTodo(index)}>&Cross;</button>
+    </div>
+  {:else if filter == "completed"}
+    {#if todo.status}
+      <p>{todo.todo}</p>
+      <div class="btn-content">
         <input type="checkbox" bind:checked={todo.status} />
         <button on:click={() => deleteTodo(index)}>&Cross;</button>
-    </div>
+      </div>
+    {/if}
+  {:else if !todo.status}
+    {#if !todo.status}
+      <p>{todo.todo}</p>
+      <div class="btn-content">
+        <input type="checkbox" bind:checked={todo.status} />
+        <button on:click={() => deleteTodo(index)}>&Cross;</button>
+      </div>
+    {/if}
+  {/if}
 </div>
 
 <style>
-    .todo {
+  .todo {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,7 +59,7 @@
       transform: scale3d(1, 1, 1);
     }
   }
- 
+
   .todo p {
     font-size: 1.6rem;
     color: rgba(255, 255, 255, 0.959);

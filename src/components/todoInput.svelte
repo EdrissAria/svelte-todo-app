@@ -1,11 +1,12 @@
 <script>
+    import Button from './Button.svelte'
     export let addTodo;
     export let value;
 </script>
 
 <div>
     <input type="text" name="todo" bind:value placeholder="todo.." />
-    <button on:click={addTodo} class="addbtn">add</button>
+    <Button onclick={addTodo} title="Add" />
 </div>
 
 <style>
