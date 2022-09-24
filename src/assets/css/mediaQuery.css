@@ -1,0 +1,42 @@
+ /* Media Query */
+ @media (max-width: 991.98px) {
+    input[type="text"] {
+      width: 300px;
+    }
+    .filter-text {
+      width: 200px !important;
+    }
+    .filter-text h1 {
+      font-size: 24pt;
+    }
+    .empty{
+      width: 200px;
+    }
+  }
+  @media (max-width: 467px) {
+    input[type="text"] {
+      width: 190px;
+      font-size: 1rem;
+      padding: 0.5rem 0.3rem;
+    }
+    .addbtn {
+      padding: 0.5rem 0.3rem;
+      font-size: 1rem;
+    }
+    .filter-text {
+      width: 200px;
+    }
+    .filter-text h1 {
+      font-size: 20pt;
+    }
+    .content {
+      padding: 10px;
+    }
+    .btn {
+      font-size: 0.8rem;
+      padding: 0.5rem 0.3rem;
+    }
+    .empty{
+      width: 100px;
+    }
+  }

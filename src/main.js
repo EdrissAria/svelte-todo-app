@@ -1,4 +1,4 @@
-import './app.css'
+import './assets/css/mediaQuery.css'
 import App from './App.svelte'
 
 const app = new App({
