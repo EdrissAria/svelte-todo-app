@@ -10,7 +10,7 @@
 </div>
 
 <style>
-     input[type="text"] {
+    input[type="text"] {
     width: 500px;
     padding: 0.7rem 1rem;
     outline: none;
@@ -24,17 +24,5 @@
   }
   input[type="text"]:focus {
     border: 1px solid rgb(17, 236, 116);
-  }
-  .addbtn {
-    border: 1px solid rgb(79, 181, 248);
-    background: var(--bgBlue);
-    border-radius: 0.2rem;
-    padding: 0.7rem 1rem;
-    font-size: 1.2rem;
-    color: #fff;
-    cursor: pointer;
-  }
-  .addbtn:hover {
-    transform: scale(1.01);
   }
 </style>

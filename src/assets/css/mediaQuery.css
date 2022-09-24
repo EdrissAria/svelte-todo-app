@@ -1,42 +1,84 @@
  /* Media Query */
  @media (max-width: 991.98px) {
-    input[type="text"] {
-      width: 300px;
-    }
-    .filter-text {
-      width: 200px !important;
-    }
-    .filter-text h1 {
-      font-size: 24pt;
-    }
-    .empty{
-      width: 200px;
-    }
-  }
-  @media (max-width: 467px) {
-    input[type="text"] {
-      width: 190px;
-      font-size: 1rem;
-      padding: 0.5rem 0.3rem;
-    }
-    .addbtn {
-      padding: 0.5rem 0.3rem;
-      font-size: 1rem;
-    }
-    .filter-text {
-      width: 200px;
-    }
-    .filter-text h1 {
-      font-size: 20pt;
-    }
-    .content {
-      padding: 10px;
-    }
-    .btn {
-      font-size: 0.8rem;
-      padding: 0.5rem 0.3rem;
-    }
-    .empty{
-      width: 100px;
-    }
-  }
+   input[type="text"] {
+     width: 300px !important;
+   }
+
+   .filter-text {
+     width: 200px !important;
+   }
+
+   .filter-text h1 {
+     font-size: 24pt !important;
+   }
+
+   .empty {
+     width: 200px !important;
+   }
+ }
+
+ @media (max-width: 467px) {
+   input[type="text"] {
+     width: 188px !important;
+     font-size: 1rem !important;
+     padding: 0.5rem 0.3rem !important;
+   }
+
+   .todo {
+     padding: 0.3rem 0.5rem !important;
+   }
+
+   .todo p {
+     font-size: 1rem !important;
+   }
+
+   .todo input {
+     width: 30px !important;
+     height: 30px !important;
+     margin-right: 0.5rem !important;
+     border-radius: 0.2rem !important;
+   }
+
+   .todo input::before {
+     left: 1px !important;
+     top: 40% !important;
+     height: 50% !important;
+     width: 2px !important;
+   }
+
+   .todo input::after {
+     left: 2px !important;
+     bottom: 4px !important;
+     height: 3px !important;
+     width: 20px !important;
+   }
+
+   .todo button {
+     width: 30px !important;
+     height: 30px !important;
+     font-size: 1.4rem !important;
+     border-radius: 0.2rem !important;
+   }
+
+   .filter-text {
+     width: 200px !important;
+   }
+
+   .filter-text h1 {
+     font-size: 20pt !important;
+   }
+
+   .content {
+     padding: 10px !important;
+   }
+
+   .btn {
+     margin-left: 0.2rem !important;
+     font-size: 0.9rem !important;
+     padding: 0.5rem 0.3rem !important;
+   }
+
+   .empty {
+     width: 100px !important;
+   }
+ }

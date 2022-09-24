@@ -1,34 +1,16 @@
 <script>
-  export let todo;
-  export let deleteTodo;
-  export let index;
-  export let filter;
+  import { getContext } from 'svelte'
+  export let index; 
+  export let todo; 
+  const {deleteTodo} = getContext('todo')
 </script>
 
 <div class="todo">
-  {#if filter == "all"}
-    <p>{todo.todo}</p>
-    <div class="btn-content">
+  <p>{todo.text}</p>
+  <div class="btn-content">
       <input type="checkbox" bind:checked={todo.status} />
       <button on:click={() => deleteTodo(index)}>&Cross;</button>
-    </div>
-  {:else if filter == "completed"}
-    {#if todo.status}
-      <p>{todo.todo}</p>
-      <div class="btn-content">
-        <input type="checkbox" bind:checked={todo.status} />
-        <button on:click={() => deleteTodo(index)}>&Cross;</button>
-      </div>
-    {/if}
-  {:else if !todo.status}
-    {#if !todo.status}
-      <p>{todo.todo}</p>
-      <div class="btn-content">
-        <input type="checkbox" bind:checked={todo.status} />
-        <button on:click={() => deleteTodo(index)}>&Cross;</button>
-      </div>
-    {/if}
-  {/if}
+  </div>
 </div>
 
 <style>
@@ -41,6 +23,7 @@
     border-radius: 0.4rem;
     border: 1px solid rgb(165, 59, 236);
     background: var(--bgPurple);
+    word-break: break-all;
     animation-name: bounce;
     animation-duration: 1s;
     animation-timing-function: linear;
@@ -59,7 +42,6 @@
       transform: scale3d(1, 1, 1);
     }
   }
-
   .todo p {
     font-size: 1.6rem;
     color: rgba(255, 255, 255, 0.959);

@@ -1,9 +1,10 @@
 <script>
   // imports
+  import {setContext} from 'svelte'
   import Title from "./components/Title.svelte";
   import TodoInput from "./components/todoInput.svelte";
-  import TodoCard from "./components/todoCard.svelte";
   import Button from "./components/Button.svelte"  
+  import Todos from "./components/Todos.svelte"
   // variables and functions
   let todos = [];
   let todo = "";
@@ -14,7 +15,7 @@
     } else {
       todos = [
         {
-          todo: todo,
+          text: todo,
           status: false,
         },
         ...todos,
@@ -25,22 +26,15 @@
   const deleteTodo = (id) => {
     todos.splice(id, 1);
     todos = [...todos];
-  };
-  
+  };  
+  setContext('todo', {todo , deleteTodo})
 </script>
 
 <main>
   <Title {filter} />
   <div class="content">
     <TodoInput {addTodo} bind:value={todo} />
-    <div>
-      {#each todos as todo, index}
-       <TodoCard {todo} {filter} {index} {deleteTodo} />
-      {:else}
-        <img src="empty.png" alt="empty" class="empty" />
-        <h1>No To-dos</h1>
-      {/each}
-    </div>
+    <Todos {filter} {todos} />
     <div class="btn-footer">
       <Button onclick={() => (filter = "all")} title="All"/>
       <Button onclick={() => (filter = "completed")} title="Completed"/>
@@ -66,22 +60,14 @@
   .content {
     text-align: center;
     margin: 100px 20px;
-    background: transparent linear-gradient(109deg, #79f5c5 0%, #2dd393 100%) 0%
-      0% no-repeat padding-box;
+    background: transparent linear-gradient(109deg, #79f5c5 0%, #2dd393 100%) 0% 0% no-repeat padding-box;
     box-shadow: var(--shadowGreen);
     padding: 2rem;
     border-radius: 1rem;
-  }
-  .content h1 {
-    color: var(--light);
-    font-family: sans-serif;
   }
   .btn-footer {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
   }  
-  .empty {
-    width: 300px;
-  }
 </style>
