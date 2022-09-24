@@ -3,10 +3,10 @@
   import Title from "./components/Title.svelte";
   import TodoInput from "./components/todoInput.svelte";
   import TodoCard from "./components/todoCard.svelte";
-  
+  import Button from "./components/Button.svelte"  
   // variables and functions
   let todos = [];
-  let todo = "";
+  $: todo = "";
   let filter = "all";
   const addTodo = () => {
     if (todo == "") {
@@ -31,7 +31,7 @@
 <main>
   <Title {filter} />
   <div class="content">
-    <TodoInput {todo} {addTodo} />
+    <TodoInput {addTodo} bind:value={todo} />
     <div>
       {#each todos as todo, index}
         {#if filter == "all"}
@@ -51,11 +51,9 @@
       {/each}
     </div>
     <div class="btn-footer">
-      <button on:click={() => (filter = "all")} class="btn">All</button>
-      <button on:click={() => (filter = "completed")} class="btn">Completed</button>
-      <button on:click={() => (filter = "uncompleted")} class="btn"
-        >Uncompleted</button
-      >
+      <Button onclick={() => (filter = "all")} title="All"/>
+      <Button onclick={() => (filter = "completed")} title="Completed"/>
+      <Button onclick={() => (filter = "uncompleted")} title="Uncompleted" />
     </div>
   </div>
 </main>
@@ -87,26 +85,11 @@
     color: var(--light);
     font-family: sans-serif;
   }
-
   .btn-footer {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
-  }
-  .btn {
-    border: 1px solid rgb(60, 133, 201);
-    background: var(--bgBlue);
-    border-radius: 0.2rem;
-    padding: 0.7rem 1rem;
-    font-size: 1.2rem;
-    color: #fff;
-    cursor: pointer;
-    margin-left: 1rem;
-    transition: 0.5s;
-  }
-  .btn:hover {
-    transform: scale3d(1.01, 1.01, 1.01);
-  }
+  }  
   .empty {
     width: 300px;
   }

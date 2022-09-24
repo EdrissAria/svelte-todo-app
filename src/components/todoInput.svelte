@@ -1,11 +1,10 @@
 <script>
-    export let todo; 
     export let addTodo;
-    console.log(todo)
+    export let value;
 </script>
 
 <div>
-    <input type="text" name="todo" bind:value={todo} placeholder="todo.." />
+    <input type="text" name="todo" bind:value placeholder="todo.." />
     <button on:click={addTodo} class="addbtn">add</button>
 </div>
 
